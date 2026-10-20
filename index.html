@@ -1,944 +1,285 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Estefany ♥ Mozi da vida minha</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
 <style>
-:root {
-  --fundo: #08070b;
-  --rosa: #ff8ab5;
-  --rosa-claro: #ffd6e5;
-  --vinho: #a52656;
-  --branco: #fff4f8;
-  --cinza: #c9b9c3;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--fundo);
-  color: var(--branco);
-  font-family: 'Poppins', sans-serif;
-  overflow-x: hidden;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: -1;
-  background:
-    radial-gradient(ellipse at 15% 15%, #65152c30, transparent 45%),
-    radial-gradient(ellipse at 85% 70%, #43104c30, transparent 45%);
-}
-
-button {
-  font-family: inherit;
-}
-
-#ceu, #efeitos {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-#ceu {
-  z-index: 0;
-}
-
-#efeitos {
-  z-index: 20;
-}
-
-section, footer, header {
-  position: relative;
-  z-index: 1;
-}
-
-.estrela {
-  position: absolute;
-  background: #fff;
-  border-radius: 50%;
-  animation: cintilar 2s infinite alternate;
-}
-
-@keyframes cintilar {
-  from { opacity: .2; transform: scale(.7); }
-  to { opacity: 1; transform: scale(1.5); }
-}
-
-.coracao {
-  position: absolute;
-  bottom: -50px;
-  color: var(--rosa);
-  text-shadow: 0 0 12px #ff5c9c;
-  animation: subir linear forwards;
-}
-
-@keyframes subir {
-  to {
-    transform: translateY(-115vh) rotate(35deg);
-    opacity: 0;
-  }
-}
-
-@keyframes brilho {
-  0%, 100% { text-shadow: 0 0 10px #ff78aa55; }
-  50% { text-shadow: 0 0 28px #ff78aacc, 0 0 55px #a5265666; }
-}
-
-@keyframes aparecer {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-header {
-  padding: 20px;
-  text-align: center;
-  color: var(--rosa-claro);
-  font-size: 11px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-}
-
-.hero {
-  min-height: 88vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 65px 22px;
-}
-
-.conteudo {
-  width: 100%;
-  max-width: 760px;
-  margin: auto;
-}
-
-.selo {
-  color: var(--rosa);
-  font-size: 11px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-}
-
-h1, h2, .assinatura {
-  font-family: 'Great Vibes', cursive;
-  font-weight: 400;
-}
-
-h1 {
-  font-size: clamp(60px, 12vw, 110px);
-  line-height: 1.15;
-  color: var(--rosa-claro);
-  margin: 24px 0;
-  animation: brilho 3s infinite;
-}
-
-h2 {
-  color: var(--rosa-claro);
-  font-size: clamp(46px, 8vw, 72px);
-  line-height: 1.2;
-  margin: 18px 0 25px;
-}
-
-p {
-  line-height: 1.95;
-}
-
-.intro {
-  color: var(--cinza);
-  max-width: 540px;
-  margin: 0 auto 32px;
-  font-size: 14px;
-  font-weight: 300;
-}
-
-.simbolo {
-  color: var(--rosa);
-  font-size: 25px;
-  letter-spacing: 12px;
-  margin: 24px 0;
-}
-
-.botao {
-  display: inline-block;
-  color: white;
-  background: linear-gradient(135deg, #8e214b, #d94e83);
-  border: 1px solid #ffbad4;
-  border-radius: 50px;
-  padding: 14px 25px;
-  cursor: pointer;
-  font-size: 12px;
-  letter-spacing: 1px;
-  transition: .3s;
-  box-shadow: 0 0 25px #d94e8330;
-}
-
-.botao:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 35px #d94e8370;
-}
-
-.botao:focus-visible {
-  outline: 2px solid white;
-  outline-offset: 4px;
-}
-
-section:not(.hero) {
-  padding: 85px 22px;
-  text-align: center;
-}
-
-.linha {
-  width: 80px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--rosa), transparent);
-  margin: 28px auto;
-}
-
-.texto {
-  max-width: 620px;
-  margin: auto;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(20px, 4vw, 25px);
-  line-height: 1.9;
-  color: #e9dce3;
-}
-
-.destaque {
-  color: var(--rosa-claro);
-  font-style: italic;
-}
-
-.painel {
-  background: linear-gradient(145deg, #170d15dd, #0d0a10ee);
-  border: 1px solid #ff8ab526;
-  border-radius: 24px;
-  padding: clamp(24px, 6vw, 48px);
-  max-width: 700px;
-  margin: 35px auto 0;
-  box-shadow: 0 15px 60px #0005, inset 0 0 30px #ff8ab506;
-}
-
-.carta {
-  text-align: left;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
-  line-height: 1.85;
-  color: #f4e4ec;
-}
-
-.carta p {
-  margin-bottom: 19px;
-}
-
-.assinatura {
-  color: var(--rosa);
-  font-size: 43px;
-  text-align: right;
-  margin-top: 28px;
-}
-
-.oculto {
-  display: none !important;
-}
-
-.aparecer {
-  animation: aparecer .8s ease both;
-}
-
-.numero {
-  font-size: clamp(45px, 10vw, 76px);
-  color: var(--rosa-claro);
-  font-weight: 500;
-  margin: 15px 0;
-  text-shadow: 0 0 28px #ff8ab555;
-}
-
-.etiqueta {
-  color: var(--rosa);
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 30px;
-}
-
-.mini-painel {
-  border: 1px solid #ff8ab526;
-  background: #ffffff06;
-  border-radius: 16px;
-  padding: 22px 8px;
-}
-
-.mini-painel strong {
-  display: block;
-  color: var(--rosa-claro);
-  font-size: clamp(24px, 5vw, 38px);
-}
-
-.mini-painel span {
-  font-size: 10px;
-  color: var(--cinza);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.frase {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(25px, 5vw, 36px);
-  font-style: italic;
-  color: var(--rosa-claro);
-  line-height: 1.7;
-}
-
-#mensagemFinal {
-  margin-top: 25px;
-  color: var(--rosa-claro);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 26px;
-}
-
-footer {
-  text-align: center;
-  padding: 30px 15px 45px;
-  font-size: 11px;
-  color: #bba8b3;
-  line-height: 2.2;
-}
-
-/* Janela da senha */
-
-.modal {
-  position: fixed;
-  inset: 0;
-  z-index: 30;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background: #050307ed;
-  backdrop-filter: blur(12px);
-}
-
-.modal-caixa {
-  width: 100%;
-  max-width: 430px;
-  background: #120b12;
-  border: 1px solid #ff8ab555;
-  border-radius: 24px;
-  padding: 32px 25px;
-  text-align: center;
-  box-shadow: 0 0 70px #a5265620;
-  animation: aparecer .5s ease both;
-}
-
-.modal-caixa h2 {
-  font-size: 48px;
-}
-
-.modal-caixa p {
-  font-size: 13px;
-  color: var(--cinza);
-  margin-bottom: 20px;
-}
-
-.modal input {
-  width: 100%;
-  border: 1px solid #ff8ab555;
-  background: #08070b;
-  color: white;
-  padding: 14px;
-  border-radius: 12px;
-  text-align: center;
-  font-size: 15px;
-  margin-bottom: 15px;
-  outline: none;
-}
-
-.modal input:focus {
-  border-color: var(--rosa);
-}
-
-.erro {
-  color: #ff8cae !important;
-  min-height: 25px;
-  margin-top: 12px;
-}
-
-#site {
-  display: none;
-}
-
-.audio-controle {
-  position: fixed;
-  right: 15px;
-  bottom: 15px;
-  z-index: 15;
-  border: 1px solid #ff8ab555;
-  border-radius: 50px;
-  background: #150c14ee;
-  color: white;
-  padding: 11px 16px;
-  cursor: pointer;
-  font-size: 11px;
-  box-shadow: 0 0 25px #0008;
-}
-
-@media (max-width: 520px) {
-  .grid {
-    gap: 7px;
-  }
-
-  .mini-painel {
-    padding: 18px 4px;
-  }
-
-  .mini-painel span {
-    letter-spacing: 0;
-    font-size: 9px;
-  }
-
-  section:not(.hero) {
-    padding: 65px 18px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-  }
-}
+:root{--fundo:#08070b;--rosa:#ff8ab5;--rosa-claro:#ffd6e5;--vinho:#a52656;--branco:#fff4f8;--cinza:#c9b9c3}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--fundo);color:var(--branco);font-family:'Poppins',sans-serif;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 15% 15%,#65152c30,transparent 45%),radial-gradient(ellipse at 85% 70%,#43104c30,transparent 45%)}
+button{font-family:inherit}
+#ceu,#efeitos{position:fixed;inset:0;overflow:hidden;pointer-events:none}
+#ceu{z-index:0}#efeitos{z-index:20}
+section,footer,header{position:relative;z-index:1}
+.estrela{position:absolute;background:#fff;border-radius:50%;animation:cintilar 2s infinite alternate}
+@keyframes cintilar{from{opacity:.2;transform:scale(.7)}to{opacity:1;transform:scale(1.5)}}
+.coracao{position:absolute;bottom:-50px;color:var(--rosa);text-shadow:0 0 12px #ff5c9c;animation:subir linear forwards}
+@keyframes subir{to{transform:translateY(-115vh) rotate(35deg);opacity:0}}
+@keyframes brilho{0%,100%{text-shadow:0 0 10px #ff78aa55}50%{text-shadow:0 0 28px #ff78aacc,0 0 55px #a5265666}}
+@keyframes aparecer{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+header{padding:20px;text-align:center;color:var(--rosa-claro);font-size:11px;letter-spacing:4px;text-transform:uppercase}
+.hero{min-height:88vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:65px 22px}
+.conteudo{width:100%;max-width:760px;margin:auto}
+.selo{color:var(--rosa);font-size:11px;letter-spacing:4px;text-transform:uppercase}
+h1,h2,.assinatura{font-family:'Great Vibes',cursive;font-weight:400}
+h1{font-size:clamp(60px,12vw,110px);line-height:1.15;color:var(--rosa-claro);margin:24px 0;animation:brilho 3s infinite}
+h2{color:var(--rosa-claro);font-size:clamp(46px,8vw,72px);line-height:1.2;margin:18px 0 25px}
+p{line-height:1.95}
+.intro{color:var(--cinza);max-width:540px;margin:0 auto 32px;font-size:14px;font-weight:300}
+.simbolo{color:var(--rosa);font-size:25px;letter-spacing:12px;margin:24px 0}
+.botao{display:inline-block;color:white;background:linear-gradient(135deg,#8e214b,#d94e83);border:1px solid #ffbad4;border-radius:50px;padding:14px 25px;cursor:pointer;font-size:12px;letter-spacing:1px;transition:.3s;box-shadow:0 0 25px #d94e8330;text-decoration:none}
+.botao:hover{transform:translateY(-3px);box-shadow:0 0 35px #d94e8370}
+.botao:focus-visible{outline:2px solid white;outline-offset:4px}
+section:not(.hero){padding:85px 22px;text-align:center}
+.linha{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--rosa),transparent);margin:28px auto}
+.texto{max-width:620px;margin:auto;font-family:'Cormorant Garamond',serif;font-size:clamp(20px,4vw,25px);line-height:1.9;color:#e9dce3}
+.destaque{color:var(--rosa-claro);font-style:italic}
+.painel{background:linear-gradient(145deg,#170d15dd,#0d0a10ee);border:1px solid #ff8ab526;border-radius:24px;padding:clamp(24px,6vw,48px);max-width:700px;margin:35px auto 0;box-shadow:0 15px 60px #0005,inset 0 0 30px #ff8ab506}
+.carta{text-align:left;font-family:'Cormorant Garamond',serif;font-size:22px;line-height:1.85;color:#f4e4ec}
+.carta p{margin-bottom:19px}
+.assinatura{color:var(--rosa);font-size:43px;text-align:right;margin-top:28px}
+.oculto{display:none!important}
+.aparecer{animation:aparecer .8s ease both}
+.numero{font-size:clamp(45px,10vw,76px);color:var(--rosa-claro);font-weight:500;margin:15px 0;text-shadow:0 0 28px #ff8ab555}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:30px}
+.mini-painel{border:1px solid #ff8ab526;background:#ffffff06;border-radius:16px;padding:22px 8px}
+.mini-painel strong{display:block;color:var(--rosa-claro);font-size:clamp(24px,5vw,38px)}
+.mini-painel span{font-size:10px;color:var(--cinza);letter-spacing:1px;text-transform:uppercase}
+.frase{font-family:'Cormorant Garamond',serif;font-size:clamp(25px,5vw,36px);font-style:italic;color:var(--rosa-claro);line-height:1.7}
+#mensagemFinal{margin-top:25px;color:var(--rosa-claro);font-family:'Cormorant Garamond',serif;font-size:26px}
+footer{text-align:center;padding:30px 15px 45px;font-size:11px;color:#bba8b3;line-height:2.2}
+.modal{position:fixed;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;padding:20px;background:#050307ed;backdrop-filter:blur(12px)}
+.modal-caixa{width:100%;max-width:430px;background:#120b12;border:1px solid #ff8ab555;border-radius:24px;padding:32px 25px;text-align:center;box-shadow:0 0 70px #a5265620;animation:aparecer .5s ease both}
+.modal-caixa h2{font-size:48px}
+.modal-caixa p{font-size:13px;color:var(--cinza);margin-bottom:20px}
+.modal input{width:100%;border:1px solid #ff8ab555;background:#08070b;color:white;padding:14px;border-radius:12px;text-align:center;font-size:15px;margin-bottom:15px;outline:none}
+.modal input:focus{border-color:var(--rosa)}
+.erro{color:#ff8cae!important;min-height:25px;margin-top:12px}
+#site{display:none}
+.audio-controle{position:fixed;right:15px;bottom:15px;z-index:15;border:1px solid #ff8ab555;border-radius:50px;background:#150c14ee;color:white;padding:11px 16px;cursor:pointer;font-size:11px;box-shadow:0 0 25px #0008}
+@media(max-width:520px){.grid{gap:7px}.mini-painel{padding:18px 4px}.mini-painel span{letter-spacing:0;font-size:9px}section:not(.hero){padding:65px 18px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
 </style>
 </head>
-
 <body>
+<div id="ceu"></div><div id="efeitos"></div>
 
-<div id="ceu"></div>
-<div id="efeitos"></div>
-
-<!-- SURPRESA PROTEGIDA POR SENHA -->
 <div class="modal" id="modalSenha">
   <div class="modal-caixa">
     <div class="simbolo">♡ ✦ ♡</div>
     <div class="selo">uma surpresa só sua</div>
     <h2>Oi, meu amor...</h2>
-    <p>
-      Preparei um cantinho do universo para você.
-      Mas, antes de entrar, preciso saber uma coisa...
-    </p>
-
+    <p>Preparei um cantinho do universo para você. Mas, antes de entrar, preciso saber uma coisa...</p>
     <form id="formSenha">
-      <input
-        type="password"
-        id="senha"
-        placeholder="Qual é a nossa senha, mozi?"
-        autocomplete="off"
-        required
-      >
-      <button class="botao" type="submit">
-        Entrar no nosso universo ♥
-      </button>
+      <input type="password" id="senha" placeholder="Qual é a nossa senha, mozi?" autocomplete="off" required>
+      <button class="botao" type="submit">Entrar no nosso universo ♥</button>
     </form>
-
     <p class="erro" id="erro"></p>
-    <p style="font-size:10px; margin-top:12px">
-      Feito com amor por Estefany ✨
-    </p>
+    <p style="font-size:10px;margin-top:12px">Feito com amor por Estefany ✨</p>
   </div>
 </div>
 
-<!-- SITE -->
 <div id="site">
-
-<header>
-  ✦ um universo chamado nós ✦
-</header>
-
+<header>✦ um universo chamado nós ✦</header>
 <section class="hero">
   <div class="conteudo">
     <div class="selo">para o meu eterno amor</div>
-
     <h1>Mozi da vida minha</h1>
-
-    <p class="intro">
-      Se eu pudesse transformar tudo o que sinto por você
-      em estrelas, o céu nunca mais conheceria a escuridão.
-    </p>
-
+    <p class="intro">Se eu pudesse transformar tudo o que sinto por você em estrelas, o céu nunca mais conheceria a escuridão.</p>
     <div class="simbolo">♡ ✦ ♥ ✦ ♡</div>
-
-    <a href="#nossaHistoria" class="botao">
-      Descubra o que preparei para você ↓
-    </a>
+    <a href="#nossaHistoria" class="botao">Descubra o que preparei para você ↓</a>
   </div>
 </section>
 
 <section id="nossaHistoria">
   <div class="conteudo">
     <div class="selo">e pensar que tudo começou tão de repente...</div>
-    <h2>Nossa história</h2>
-
-    <div class="linha"></div>
-
-    <p class="texto">
-      Nos conhecemos tão de repente e, quando vi,
-      <span class="destaque">já estava apaixonada por você!</span>
-    </p>
-
-    <br>
-
-    <p class="texto">
-      Eu nem imaginava que alguém poderia chegar assim,
-      tão inesperadamente, e se tornar uma parte tão linda
-      da minha vida.
-    </p>
-
-    <br>
-
-    <p class="texto">
-      E hoje, se existe algo que eu tenho certeza,
-      é que meu coração encontrou em você alguém
-      que eu quero levar comigo para muito além do tempo.
-    </p>
-
+    <h2>Nossa história</h2><div class="linha"></div>
+    <p class="texto">Nos conhecemos tão de repente e, quando vi, <span class="destaque">já estava apaixonada por você!</span></p><br>
+    <p class="texto">Eu nem imaginava que alguém poderia chegar assim, tão inesperadamente, e se tornar uma parte tão linda da minha vida.</p><br>
+    <p class="texto">E hoje, se existe algo que eu tenho certeza, é que meu coração encontrou em você alguém que eu quero levar comigo para muito além do tempo.</p>
     <div class="simbolo">♡</div>
   </div>
 </section>
 
 <section>
   <div class="conteudo">
-    <div class="selo">uma cartinha do meu coração</div>
-    <h2>Para você, meu mozi</h2>
-
-    <p class="intro">
-      Escrevi algumas palavras para tentar explicar
-      um pouquinho de tudo o que você significa para mim.
-    </p>
-
-    <button class="botao" id="botaoCarta" onclick="abrirCarta()">
-      Abrir minha carta de amor 💌
-    </button>
-
+    <div class="selo">uma cartinha do meu coração</div><h2>Para você, meu mozi</h2>
+    <p class="intro">Escrevi algumas palavras para tentar explicar um pouquinho de tudo o que você significa para mim.</p>
+    <button class="botao" id="botaoCarta" onclick="abrirCarta()">Abrir minha carta de amor 💌</button>
     <div class="painel carta oculto" id="carta">
       <p>Meu mozi da vida minha, ❤️</p>
-
-      <p>
-        Se alguém me perguntasse como foi que eu me apaixonei
-        por você, talvez eu nem soubesse explicar direito.
-        A gente se conheceu tão de repente e, quando percebi,
-        você já tinha conquistado um espaço enorme dentro de mim.
-      </p>
-
-      <p>
-        Você se tornou aquele pensamento que aparece do nada,
-        o sorriso que surge quando lembro de alguma coisa nossa
-        e aquela pessoa com quem eu quero dividir minhas alegrias,
-        meus sonhos e até os dias em que eu não estiver tão bem.
-      </p>
-
-      <p>
-        Eu amo você por quem você é, pelo seu jeitinho,
-        pelas nossas conversas, pelos nossos momentos e por
-        tudo aquilo que ainda vamos viver juntos.
-        Não preciso que nossa história seja perfeita.
-        Quero que ela seja nossa, verdadeira e cheia de amor.
-      </p>
-
-      <p>
-        Quero continuar conhecendo cada detalhe seu,
-        descobrir novos motivos para me apaixonar e construir
-        lembranças que um dia a gente vai recordar sorrindo.
-        Quero estar do seu lado, torcer por você e lembrar
-        que nós dois somos um time.
-      </p>
-
-      <p>
-        E se o tempo passar, se os anos mudarem tanta coisa
-        e a vida nos levar por caminhos que ainda nem conhecemos,
-        eu espero que a gente nunca se esqueça de como tudo começou:
-        tão de repente, tão inesperado e tão especial.
-      </p>
-
-      <p>
-        <strong>
-          Eu te amo daqui até a eternidade e além da vida.
-        </strong>
-      </p>
-
-      <p>
-        Se existisse um lugar depois de todas as estrelas,
-        depois do fim do tempo e de tudo o que conhecemos,
-        meu amor ainda tentaria encontrar o caminho até você.
-      </p>
-
-      <p>
-        Obrigada por fazer parte da minha história.
-        Você é o meu mozi, meu amor e uma das partes mais
-        bonitas da minha vida.
-      </p>
-
-      <div class="assinatura">
-        Para sempre sua, Estefany ♥
-      </div>
+      <p>Se alguém me perguntasse como foi que eu me apaixonei por você, talvez eu nem soubesse explicar direito. A gente se conheceu tão de repente e, quando percebi, você já tinha conquistado um espaço enorme dentro de mim.</p>
+      <p>Você se tornou aquele pensamento que aparece do nada, o sorriso que surge quando lembro de alguma coisa nossa e aquela pessoa com quem eu quero dividir minhas alegrias, meus sonhos e até os dias em que eu não estiver tão bem.</p>
+      <p>Eu amo você por quem você é, pelo seu jeitinho, pelas nossas conversas, pelos nossos momentos e por tudo aquilo que ainda vamos viver juntos. Não preciso que nossa história seja perfeita. Quero que ela seja nossa, verdadeira e cheia de amor.</p>
+      <p>Quero continuar conhecendo cada detalhe seu, descobrir novos motivos para me apaixonar e construir lembranças que um dia a gente vai recordar sorrindo. Quero estar do seu lado, torcer por você e lembrar que nós dois somos um time.</p>
+      <p>E se o tempo passar, se os anos mudarem tanta coisa e a vida nos levar por caminhos que ainda nem conhecemos, eu espero que a gente nunca se esqueça de como tudo começou: tão de repente, tão inesperado e tão especial.</p>
+      <p><strong>Eu te amo daqui até a eternidade e além da vida.</strong></p>
+      <p>Se existisse um lugar depois de todas as estrelas, depois do fim do tempo e de tudo o que conhecemos, meu amor ainda tentaria encontrar o caminho até você.</p>
+      <p>Obrigada por fazer parte da minha história. Você é o meu mozi, meu amor e uma das partes mais bonitas da minha vida.</p>
+      <div class="assinatura">Para sempre sua, Estefany ♥</div>
     </div>
   </div>
 </section>
 
 <section>
   <div class="conteudo">
-    <div class="selo">desde o nosso começo</div>
-    <h2>Nosso tempo de amor</h2>
-
-    <p class="intro">
-      Desde aquele dia, o calendário ganhou uma data
-      que sempre vai ter um lugar especial no meu coração.
-    </p>
-
+    <div class="selo">desde o nosso começo</div><h2>Nosso tempo de amor</h2>
+    <p class="intro">Desde aquele dia, o calendário ganhou uma data que sempre vai ter um lugar especial no meu coração.</p>
     <div class="painel">
-      <div class="simbolo">♥ ✦ ♥</div>
-      <div class="numero" id="dias">0</div>
-      <p>dias da nossa história</p>
-
+      <div class="simbolo">♥ ✦ ♥</div><div class="numero" id="dias">0</div><p>dias da nossa história</p>
       <div class="grid">
-        <div class="mini-painel">
-          <strong id="anos">0</strong>
-          <span>anos</span>
-        </div>
-
-        <div class="mini-painel">
-          <strong id="meses">0</strong>
-          <span>meses</span>
-        </div>
-
-        <div class="mini-painel">
-          <strong id="restantes">0</strong>
-          <span>dias extras</span>
-        </div>
+        <div class="mini-painel"><strong id="anos">0</strong><span>anos</span></div>
+        <div class="mini-painel"><strong id="meses">0</strong><span>meses</span></div>
+        <div class="mini-painel"><strong id="restantes">0</strong><span>dias extras</span></div>
       </div>
-
-      <div class="linha"></div>
-
-      <p class="destaque">
-        Desde 13 de abril de 2025. E contando... ♾️
-      </p>
+      <div class="linha"></div><p class="destaque">Desde 13 de abril de 2025. E contando... ♾️</p>
     </div>
   </div>
 </section>
 
 <section>
   <div class="conteudo">
-    <div class="selo">algumas coisas nunca mudam</div>
-    <h2>Minhas promessas para nós</h2>
-
+    <div class="selo">algumas coisas nunca mudam</div><h2>Minhas promessas para nós</h2>
     <div class="painel">
-      <p class="texto">
-        ♡ Continuar escolhendo você.
-      </p>
-
-      <div class="linha"></div>
-
-      <p class="texto">
-        ♡ Celebrar suas conquistas como se fossem minhas.
-      </p>
-
-      <div class="linha"></div>
-
-      <p class="texto">
-        ♡ Cuidar do nosso amor com carinho e respeito.
-      </p>
-
-      <div class="linha"></div>
-
-      <p class="texto">
-        ♡ Construir com você lembranças que o tempo não apague.
-      </p>
-
-      <div class="linha"></div>
-
-      <p class="texto">
-        ♡ Nunca deixar de lembrar o quanto você é especial para mim.
-      </p>
+      <p class="texto">♡ Continuar escolhendo você.</p><div class="linha"></div>
+      <p class="texto">♡ Celebrar suas conquistas como se fossem minhas.</p><div class="linha"></div>
+      <p class="texto">♡ Cuidar do nosso amor com carinho e respeito.</p><div class="linha"></div>
+      <p class="texto">♡ Construir com você lembranças que o tempo não apague.</p><div class="linha"></div>
+      <p class="texto">♡ Nunca deixar de lembrar o quanto você é especial para mim.</p>
     </div>
   </div>
 </section>
 
 <section>
   <div class="conteudo">
-    <div class="selo">a última surpresa...</div>
-    <h2>Leia com o coração</h2>
-
-    <p class="frase">
-      "Se eu tivesse mil vidas para viver,
-      ainda desejaria encontrar você em todas elas."
-    </p>
-
+    <div class="selo">a última surpresa...</div><h2>Leia com o coração</h2>
+    <p class="frase">"Se eu tivesse mil vidas para viver, ainda desejaria encontrar você em todas elas."</p>
     <div class="linha"></div>
-
-    <button class="botao" onclick="surpresaFinal()">
-      Tenho mais uma coisa para te dizer ♥
-    </button>
-
+    <button class="botao" onclick="surpresaFinal()">Tenho mais uma coisa para te dizer ♥</button>
     <p id="mensagemFinal"></p>
   </div>
 </section>
 
-<footer>
-  <div class="simbolo">♡ ✦ ♥ ✦ ♡</div>
-  Feito com todo o amor do mundo por Estefany.<br>
-  Para Mozi da vida minha.<br>
-  <span style="color:#ff8ab5">
-    Aqui, na eternidade e além da vida. ♾️
-  </span>
-</footer>
-
+<footer><div class="simbolo">♡ ✦ ♥ ✦ ♡</div>Feito com todo o amor do mundo por Estefany.<br>Para Mozi da vida minha.<br><span style="color:#ff8ab5">Aqui, na eternidade e além da vida. ♾️</span></footer>
 </div>
 
-<!-- MÚSICA -->
-<audio id="musica" loop preload="none">
-  <source src="musica.mp3" type="audio/mpeg">
-</audio>
-
-<button class="audio-controle oculto" id="botaoMusica"
-        onclick="alternarMusica()">
-  ♫ Tocar nossa música
-</button>
+<audio id="musica" loop preload="none"><source src="musica.mp3" type="audio/mpeg"></audio>
+<button class="audio-controle oculto" id="botaoMusica" onclick="alternarMusica()">♫ Tocar nossa música</button>
 
 <script>
-// ==================================
-// PERSONALIZAÇÃO
-// ==================================
-
-// Altere para a senha que você quiser.
-// O Mozi precisará digitar exatamente essa senha.
-const senhaSecreta = "mozi2025";
-
-// Data de início do namoro: 13/04/2025
-const inicioNamoro = new Date(2025, 3, 13);
-
-// ==================================
-// CÉU ESTRELADO
-// ==================================
+const senhaSecreta = "mozi2025"; // Troque pela senha que quiser.
+const inicioNamoro = new Date(2025, 3, 13); // 13 de abril de 2025
 
 const ceu = document.getElementById("ceu");
-
-for (let i = 0; i < 100; i++) {
-  const estrela = document.createElement("span");
-  estrela.className = "estrela";
-
-  estrela.style.left = Math.random() * 100 + "%";
-  estrela.style.top = Math.random() * 100 + "%";
-
-  const tamanho = 1 + Math.random() * 2.5;
-  estrela.style.width = tamanho + "px";
-  estrela.style.height = tamanho + "px";
-  estrela.style.animationDelay = Math.random() * 4 + "s";
-  estrela.style.animationDuration = (1.5 + Math.random() * 3) + "s";
-
+for(let i=0;i<100;i++){
+  const estrela=document.createElement("span");
+  estrela.className="estrela";
+  estrela.style.left=Math.random()*100+"%";
+  estrela.style.top=Math.random()*100+"%";
+  const tamanho=1+Math.random()*2.5;
+  estrela.style.width=tamanho+"px";
+  estrela.style.height=tamanho+"px";
+  estrela.style.animationDelay=Math.random()*4+"s";
+  estrela.style.animationDuration=(1.5+Math.random()*3)+"s";
   ceu.appendChild(estrela);
 }
 
-// ==================================
-// CORAÇÕES FLUTUANTES
-// ==================================
-
-function criarCoracao() {
-  const el = document.createElement("span");
-  el.className = "coracao";
-
-  const simbolos = ["♥", "♡", "✦", "💗"];
-  el.textContent = simbolos[
-    Math.floor(Math.random() * simbolos.length)
-  ];
-
-  el.style.left = Math.random() * 100 + "vw";
-  el.style.fontSize = (12 + Math.random() * 22) + "px";
-  el.style.animationDuration = (6 + Math.random() * 7) + "s";
-
+function criarCoracao(){
+  const el=document.createElement("span");
+  el.className="coracao";
+  const simbolos=["♥","♡","✦","💗"];
+  el.textContent=simbolos[Math.floor(Math.random()*simbolos.length)];
+  el.style.left=Math.random()*100+"vw";
+  el.style.fontSize=(12+Math.random()*22)+"px";
+  el.style.animationDuration=(6+Math.random()*7)+"s";
   document.getElementById("efeitos").appendChild(el);
-
-  setTimeout(() => el.remove(), 14000);
+  setTimeout(()=>el.remove(),14000);
 }
+setInterval(criarCoracao,700);
 
-setInterval(criarCoracao, 700);
-
-// ==================================
-// SENHA DE ENTRADA
-// ==================================
-
-document.getElementById("formSenha").addEventListener("submit", function(event) {
+document.getElementById("formSenha").addEventListener("submit",function(event){
   event.preventDefault();
-
-  const digitada = document.getElementById("senha").value;
-  const erro = document.getElementById("erro");
-
-  if (digitada === senhaSecreta) {
+  const digitada=document.getElementById("senha").value;
+  const erro=document.getElementById("erro");
+  if(digitada===senhaSecreta){
     document.getElementById("modalSenha").classList.add("oculto");
-    document.getElementById("site").style.display = "block";
+    document.getElementById("site").style.display="block";
     document.getElementById("botaoMusica").classList.remove("oculto");
-
     atualizarContagem();
-
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  } else {
-    erro.textContent = "Hmm... tenta novamente, meu amor. ❤️";
-    document.getElementById("senha").value = "";
+    window.scrollTo({top:0,behavior:"smooth"});
+  }else{
+    erro.textContent="Hmm... tenta novamente, meu amor. ❤️";
+    document.getElementById("senha").value="";
     document.getElementById("senha").focus();
   }
 });
 
-// ==================================
-// CARTA DE AMOR
-// ==================================
-
-function abrirCarta() {
-  const carta = document.getElementById("carta");
-  const botao = document.getElementById("botaoCarta");
-
+function abrirCarta(){
+  const carta=document.getElementById("carta");
+  const botao=document.getElementById("botaoCarta");
   carta.classList.toggle("oculto");
-
-  if (!carta.classList.contains("oculto")) {
+  if(!carta.classList.contains("oculto")){
     carta.classList.add("aparecer");
-    botao.textContent = "Fechar minha cartinha 💌";
-  } else {
+    botao.textContent="Fechar minha cartinha 💌";
+  }else{
     carta.classList.remove("aparecer");
-    botao.textContent = "Abrir minha carta de amor 💌";
+    botao.textContent="Abrir minha carta de amor 💌";
   }
 }
 
-// ==================================
-// CONTAGEM DO NAMORO
-// ==================================
-
-function atualizarContagem() {
-  const hoje = new Date();
-  const inicio = new Date(inicioNamoro);
-
-  hoje.setHours(0, 0, 0, 0);
-  inicio.setHours(0, 0, 0, 0);
-
-  const diferenca = hoje - inicio;
-
-  if (diferenca < 0) {
-    document.getElementById("dias").textContent = "♡";
-    document.getElementById("anos").textContent = "0";
-    document.getElementById("meses").textContent = "0";
-    document.getElementById("restantes").textContent = "0";
+function atualizarContagem(){
+  const hoje=new Date();
+  const inicio=new Date(inicioNamoro);
+  hoje.setHours(0,0,0,0);
+  inicio.setHours(0,0,0,0);
+  const diferenca=hoje-inicio;
+  if(diferenca<0){
+    document.getElementById("dias").textContent="♡";
+    document.getElementById("anos").textContent="0";
+    document.getElementById("meses").textContent="0";
+    document.getElementById("restantes").textContent="0";
     return;
   }
-
-  const diasTotais = Math.floor(diferenca / 86400000);
-
-  let anos = hoje.getFullYear() - inicio.getFullYear();
-  let meses = hoje.getMonth() - inicio.getMonth();
-
-  if (hoje.getDate() < inicio.getDate()) {
-    meses--;
-  }
-
-  if (meses < 0) {
-    anos--;
-    meses += 12;
-  }
-
-  const dataAniversarioMes = new Date(inicio);
-  dataAniversarioMes.setFullYear(hoje.getFullYear());
-  dataAniversarioMes.setMonth(hoje.getMonth());
-
-  let dataBase = new Date(inicio);
+  const diasTotais=Math.floor(diferenca/86400000);
+  let anos=hoje.getFullYear()-inicio.getFullYear();
+  let meses=hoje.getMonth()-inicio.getMonth();
+  if(hoje.getDate()<inicio.getDate())meses--;
+  if(meses<0){anos--;meses+=12}
+  const dataBase=new Date(inicio);
   dataBase.setFullYear(hoje.getFullYear());
-  dataBase.setMonth(inicio.getMonth() + anos * 12 + meses);
-
-  if (dataBase > hoje) {
-    meses--;
-    dataBase.setMonth(dataBase.getMonth() - 1);
-  }
-
-  const restantes = Math.floor(
-    (hoje - dataBase) / 86400000
-  );
-
-  document.getElementById("dias").textContent =
-    diasTotais.toLocaleString("pt-BR");
-
-  document.getElementById("anos").textContent = anos;
-  document.getElementById("meses").textContent = meses;
-  document.getElementById("restantes").textContent = restantes;
+  dataBase.setMonth(inicio.getMonth()+anos*12+meses);
+  if(dataBase>hoje){meses--;dataBase.setMonth(dataBase.getMonth()-1)}
+  const restantes=Math.floor((hoje-dataBase)/86400000);
+  document.getElementById("dias").textContent=diasTotais.toLocaleString("pt-BR");
+  document.getElementById("anos").textContent=anos;
+  document.getElementById("meses").textContent=meses;
+  document.getElementById("restantes").textContent=restantes;
 }
 
-// ==================================
-// MÚSICA DE FUNDO
-// ==================================
-
-const musica = document.getElementById("musica");
-const botaoMusica = document.getElementById("botaoMusica");
-
-async function alternarMusica() {
-  if (musica.paused) {
-    try {
-      await musica.play();
-      botaoMusica.textContent = "♫ Pausar nossa música";
-    } catch (erro) {
-      botaoMusica.textContent = "Não foi possível tocar a música";
-    }
-  } else {
-    musica.pause();
-    botaoMusica.textContent = "♫ Tocar nossa música";
+const musica=document.getElementById("musica");
+const botaoMusica=document.getElementById("botaoMusica");
+async function alternarMusica(){
+  if(musica.paused){
+    try{await musica.play();botaoMusica.textContent="♫ Pausar nossa música"}
+    catch(erro){botaoMusica.textContent="Não foi possível tocar a música"}
+  }else{
+    musica.pause();botaoMusica.textContent="♫ Tocar nossa música";
   }
 }
 
-// ==================================
-// ÚLTIMA SURPRESA
-// ==================================
-
-function surpresaFinal() {
-  const mensagem = document.getElementById("mensagemFinal");
-
-  mensagem.innerHTML =
-    "Mozi da vida minha... ❤️<br><br>" +
-    "Eu te amo daqui até a eternidade e além da vida. " +
-    "Não importa quantas estrelas existam no universo, " +
-    "meu coração sempre vai ter uma favorita: você.<br><br>" +
-    "Com amor, sua Estefany. ♾️";
-
+function surpresaFinal(){
+  const mensagem=document.getElementById("mensagemFinal");
+  mensagem.innerHTML="Mozi da vida minha... ❤️<br><br>Eu te amo daqui até a eternidade e além da vida. Não importa quantas estrelas existam no universo, meu coração sempre vai ter uma favorita: você.<br><br>Com amor, sua Estefany. ♾️";
   mensagem.classList.add("aparecer");
-
-  for (let i = 0; i < 35; i++) {
-    setTimeout(criarCoracao, i * 100);
-  }
-
-  mensagem.scrollIntoView({
-    behavior: "smooth",
-    block: "center"
-  });
+  for(let i=0;i<35;i++)setTimeout(criarCoracao,i*100);
+  mensagem.scrollIntoView({behavior:"smooth",block:"center"});
 }
 </script>
-
 </body>
 </html>
